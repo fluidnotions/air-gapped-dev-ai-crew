@@ -63,7 +63,7 @@ This project uses a central `config` class to define key paths:
 - "Where does Go code publish to Kafka?"
 - "Does any handler override default logic outside its billing channel?"
 - "What namespace is defined in the K8s YAML?"
-- "Summarize what this Slack export says about the invoice pipeline."
+- "Summarize what this Slack export says the issue being discussed, provide explination and additional context from other vector db entries."
 
 ---
 
