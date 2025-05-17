@@ -16,3 +16,7 @@ sentence-transformers
 pyaudio
 langchain_community
 javalang
+pytest
+setuptools
+rx
+cachetools

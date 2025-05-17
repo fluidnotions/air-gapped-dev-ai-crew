@@ -3,9 +3,10 @@ from langchain.vectorstores import Chroma
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain_community.llms import Ollama
 
-from ast_toolkit import JavaASTTool, PythonASTTool, GoASTTool, TypeScriptASTTool, PHPASTTool
-from git_and_k8s_tools import GitTool, K8sYAMLTool
-from mcm_git_diff_tool import MCMGitDiffTool
+from .agent_tools.ast import JavaASTTool, PyASTTool, GoASTTool, TypeScriptASTTool, PHPASTTool
+from .agent_tools import GitTool, K8sYAMLTool
+from .agent_tools import MCMGitDiffTool
+from .util import get_config
 
 # Load vector store
 vectorstore = Chroma(persist_directory="vector_store", embedding_function=HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2"))
@@ -21,6 +22,7 @@ class CodebaseQueryTool:
             results = [doc for doc in results if self.filter_keyword.lower() in doc.metadata.get("source", "").lower()]
         return f"[{self.label} results]\n" + "\n---\n".join([doc.page_content for doc in results])
 
+config = get_config()
 # Tool instances
 java_tool = CodebaseQueryTool("Java", ".java")
 go_tool = CodebaseQueryTool("Go", ".go")
@@ -42,7 +44,7 @@ mcm_llm = Ollama(model="code-llama")
 
 # AST tools
 java_ast_tool = JavaASTTool("data/code")
-python_ast_tool = PythonASTTool("data/code")
+python_ast_tool = PyASTTool("data/code")
 go_ast_tool = GoASTTool("data/code")
 ts_ast_tool = TypeScriptASTTool("data/code")
 php_ast_tool = PHPASTTool("data/code")

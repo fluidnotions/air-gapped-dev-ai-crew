@@ -1,0 +1,15 @@
+{
+  "SYSTEM_PATHS": {
+    "CODE_DIR": "/Users/justinrobinson/Documents/hyvemobile/repos",
+    "DOCS_DIR": "/Users/justinrobinson/Documents/knowledge",
+    "SLACK_EXPORT_DIR": "/Users/justinrobinson/Documents/knowledge/slack-context"
+  },
+  "AGENTS": {
+    "MCM": {
+       "MCM_REFERENCE_BRANCH": ""
+    },
+    "DOCS": {
+      "SLACK_BIN": "src/update_tools/slackdump_macOS_arm64/slackdump"
+    }
+  }
+}

@@ -1,5 +1,5 @@
 from crewai import Task, Crew
-from crew_agents import architect_agent, java_agent, go_agent, php_agent, docs_agent
+from crew_agents import architect_agent, java_agent, go_agent, php_agent, docs_agent, ts_agent
 
 print("\n💬 Ask your question about the codebase:")
 user_input = input("> ")
@@ -11,7 +11,7 @@ task = Task(
 )
 
 crew = Crew(
-    agents=[architect_agent, java_agent, go_agent, php_ts_agent, docs_agent],
+    agents=[architect_agent, java_agent, go_agent, php_agent, docs_agent, ts_agent],
     tasks=[task],
     verbose=True
 )
