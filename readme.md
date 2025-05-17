@@ -67,6 +67,29 @@ This project uses a central `config` class to define key paths:
 
 ---
 
+## ✨ Early Enhancements
+
+To improve reasoning accuracy, reduce hallucination, and enable long-term adaptability, the following enhancements are included by default in the initial build:
+
+- **RAG Prompt Control**  
+  All agents use strict prompt templates that instruct them to respond only using retrieved context, and to indicate when the context is insufficient.
+
+- **Scoped Search Filtering**  
+  Agents like `mcm_agent` and `docs_agent` have tools that limit vector search to only relevant tagged sources (e.g., `mcm_v3_arch_doc`), reducing irrelevant chunk injection.
+
+- **Query Logging & Reflection (Optional)**  
+  Every user question, retrieved context, and LLM response can be logged to JSON. This will support future ranking, error analysis, and the creation of hardcoded retrieval shortcuts.
+
+- **Pluggable Embedding Models**  
+  Embeddings for code, documentation, and Slack are treated separately and can be switched independently (e.g., `code-search-net` for code, `MiniLM` for docs).
+
+- **Agent Memory Isolation**  
+  Prompt history and tool interactions are isolated per agent for clearer traceability and to avoid cross-context bleed.
+
+These choices lay the foundation for robust, interpretable behavior and future fine-tuning.
+
+---
+
 ## 🛠️ To-Do / Improvements
 
 ### Git & Branch Comparison
@@ -83,4 +106,3 @@ This project uses a central `config` class to define key paths:
 ### Kubernetes YAML
 - [x] Parse secrets, configmaps, and namespaces
 - [x] Support describe/get only (no apply/delete)
-- [ ] Add RBAC analysis
